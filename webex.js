@@ -1,5 +1,6 @@
-import Application from '@webex/embedded-app-sdk';
 const app = new Application();
+
+log('App starting')
 
 app.onReady().then(() => {
     log('onReady()', { message: 'host app is ready' })
