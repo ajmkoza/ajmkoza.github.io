@@ -1,16 +1,22 @@
-var embedded_app = new Application();
+const config = {
+  logs: {
+    logLevel: 0   //INFO: 0, WARN: 1, ERROR: 2, SILENT: 3
+  }
+}
+
+const app = new Application();
 var sidebar;
 var callCount;
-var importantContactId = "(734) 330-1232";
+var importantContactId = "7343301232";
 
-embedded_app.onReady().then(() => {
+app.onReady().then(() => {
    log("onReady()", { message: "EA is ready." });
-   embedded_app.listen().then(() => {
-     embedded_app.on("sidebar:callStateChanged", (call) => {
+   app.listen().then(() => {
+     app.on("sidebar:callStateChanged", (call) => {
        console.log("Call state changed. Call object:", call);
        handleCallStateChange(call);
      });
-     embedded_app.on("application:viewStateChanged", (viewState) => {
+     app.on("application:viewStateChanged", (viewState) => {
        console.log("View state changed. Current view:", viewState);
        switch (viewState) {
          case "IN_FOCUS":
@@ -54,7 +60,7 @@ embedded_app.onReady().then(() => {
  }
 
  function initializeSideBar(callCount) {
-   embedded_app.context.getSidebar().then((s) => {
+   app.context.getSidebar().then((s) => {
        sidebar = s;
        console.log("Show a badge on the sidebar...")
        handleBadge(callCount, sidebar);
