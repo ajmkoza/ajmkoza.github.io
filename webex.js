@@ -1,4 +1,4 @@
-var embedded_app = new window.webex.Application();
+var embedded_app = new Application();
 var sidebar;
 var callCount;
 var importantContactId = "(734) 330-1232";
@@ -60,14 +60,14 @@ embedded_app.onReady().then(() => {
        handleBadge(callCount, sidebar);
      })
      .catch((error) => {
-       console.log("getSidebar() failed. Error: ", Webex.Application.ErrorCodes[error]);
+       console.log("getSidebar() failed. Error: ", Application.ErrorCodes[error]);
      });
  }
 
  function handleBadge(callCount, sidebar) {
    // Make sure the sidebar is available..
    if (!sidebar) {
-     console.log("Sidebar info is not available. Error: ", Webex.Application.ErrorCodes[4]);
+     console.log("Sidebar info is not available. Error: ", Application.ErrorCodes[4]);
      return;
    }
  
@@ -81,6 +81,6 @@ embedded_app.onReady().then(() => {
    sidebar.showBadge(badge).then((success) => {
        console.log("sidebar.showBadge() successful.", success);
      }).catch((error) => {
-       console.log("sidebar.showBadge() failed. Error: ", Webex.Application.ErrorCodes[error]);
+       console.log("sidebar.showBadge() failed. Error: ", Application.ErrorCodes[error]);
      });
  }
