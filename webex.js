@@ -32,12 +32,11 @@ app.onReady().then(() => {
    switch (call.state) {
      case "Started":
        console.log("A call has come in...");
-       
+       initializeSideBar(callCount++);
        // Check to see if the call is from a VIP...
        if (call.id === importantContactId) {
          console.log("A VIP call is incoming! Notify the user...");
          // Initialize the sidebar, passing in the incremented the badge count...
-         initializeSideBar(callCount++);
        }
        
        // For all calls, log the information...
